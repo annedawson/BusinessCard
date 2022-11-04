@@ -1,14 +1,14 @@
 package net.annedawson.businesscard
 
 /*
-Date: Wednesday 2nd November 2022, 13:03 PT
+Date: Friday 4th November 2022, 16:40 PT
 Programmer: Anne Dawson
 Email: anne.dawson@gmail.com
 App: Business Card
 File: MainActivity.kt
 Codelab title: Create a Business Card app
 https://developer.android.com/codelabs/basic-android-kotlin-compose-business-card#0
-Status: NOT Completed
+Status: NOT Completed (just padding needs adjusting)
  */
 
 
@@ -18,10 +18,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+//import androidx.compose.foundation.layout.ColumnScopeInstance.weight
+import androidx.compose.material.*
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -59,7 +57,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BusinessCardApp(modifier: Modifier = Modifier){
-    Column(modifier.fillMaxSize(1f).background(Color.Green),
+    Column(
+        modifier
+            .fillMaxSize(1f)
+            .background(Color.Green),
     ) {
         val image = painterResource(R.drawable.android_logo)
         Column(
@@ -120,30 +121,68 @@ fun SecondSection(modifier: Modifier) {
     Column(
         modifier
             .background(Color.DarkGray)
+            .background(Color(0xFF154360))
             .fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center){
         Divider(
-            color = Color.White,
+            color = Color.LightGray,
             modifier = Modifier
                 .fillMaxWidth(1f)
                 .width(12.dp)
         )
-        Text(text = "+1 (123) 456 7890", color = Color.White)
+        Spacer(modifier = Modifier.height(8.dp))
+        Row() {
+
+            Icon(modifier =Modifier.weight(1f,true),
+                painter = painterResource(R.drawable.ic_baseline_call_24),
+                contentDescription = null, tint = Color(0xFF3ddc84))
+            Text(modifier =Modifier.weight(4f,true),
+                text = "+1 (123) 456 7890",
+                color = Color.White)
+        }
+        Spacer(modifier = Modifier.height(8.dp))
         Divider(
-            color = Color.White,
+            color = Color.LightGray,
             modifier = Modifier
                 .fillMaxWidth(1f)
                 .width(12.dp)
         )
-        Text(text = "annedawson.net", color = Color.White)
+        Spacer(modifier = Modifier.height(8.dp))
+        Row() {
+
+            Icon(modifier =Modifier.weight(1f,true),
+                painter = painterResource(R.drawable.ic_baseline_share_24),
+                contentDescription = null, tint = Color(0xFF3ddc84))
+
+            Text(modifier =Modifier.weight(4f,true),
+                text = "@annedawson", color = Color.White)
+        }
+        Spacer(modifier = Modifier.height(8.dp))
+
+
+
         Divider(
-            color = Color.White,
+            color = Color.LightGray,
             modifier = Modifier
                 .fillMaxWidth(1f)
                 .width(12.dp)
         )
-        Text(text = "anne.dawson@gmail.com", color = Color.White)
+        Spacer(modifier = Modifier.height(8.dp))
+        Row() {
+
+            Icon(
+                modifier = Modifier.weight(1f, true),
+                painter = painterResource(R.drawable.ic_baseline_email_24),
+                contentDescription = null, tint =  Color(0xFF3ddc84)
+            )
+
+            Text(
+                modifier =Modifier.weight(4f,true),
+                text = "anne.dawson@gmail.com", color = Color.White)
+
+        }
+        Spacer(modifier = Modifier.height(56.dp))
     }
 }
 
